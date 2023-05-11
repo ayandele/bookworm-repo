@@ -12,7 +12,7 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=search+terms&key=AIzaSyDPsi
 });
 
 let userInput = 'Comics'
-let requestURL = 'https://www.googleapis.com/books/v1/volumes?q=' + userInput
+let requestURL = 'https://www.googleapis.com/books/v1/volumes?q=' + userInput + '&startIndex=20&maxResults=40'
 
 fetch(requestURL ,{
     method: "GET",
