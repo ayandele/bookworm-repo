@@ -25,7 +25,7 @@
     <p>This site is owned and managed by Team 4, whose members are Name1, Name2, and Name3.</p>
 <section>
     <!-- dropdown button -->
-    <div class="dropdown-box">
+    <!-- <div class="dropdown-box">
         <div class="form-group">
         <label for="dropdownMenuButton">Search and Browse Books:</label>
         <div class="dropdown">
@@ -40,12 +40,12 @@
             </div>
         </div>
         </div>
-    </div>
+    </div> -->
 </section>
 
 <section>
     <!-- Sign up section -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-md-6">
 <section>
@@ -57,14 +57,37 @@
         </div>
             <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
-</section>
+    </section>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6"> -->
 
-    <!-- The list of books from the API -->
-    <div class="col-12 col-md-8">
-        <h2 class="subtitle">List of Bestsellers: <span id="repo-search-term"></span></h2>
-        <div id="repos-container" class="list-group"></div>
+    <!-- Search and Browse Books box and List of Bestsellers -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="container border rounded p-3">
+                <div class="form-group">
+                    <label for="dropdownMenuButton">Search and Browse Books:</label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Your Genre Here
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-9">
+            <div class="col-12 col-md-6">
+                <h2 class="subtitle">List of Bestsellers: <span id="repo-search-term"></span></h2>
+                <div id="repos-container" class="list-group"></div>
+            </div>
+        </div>
     </div>
             </section>
 
