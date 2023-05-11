@@ -13,12 +13,26 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=search+terms&key=AIzaSyDPsi
 })
 .then(function (data) {
     console.log(data);
-    let selectedLists = data.items
-    for (i = 0; i < data.items.length; i++)
-         //.lists.filter(list => list.list_name.includes("Fiction"))
-        console.log(selectedLists[i].volumeInfo.categories)
-        if (selectedLists[i].volumeInfo.categories === 'Computers') {
-            console.log('hello!')
-        }
-    // console.log(selectedLists)
+    // let typeInput = ['Computers']
+    // for (i = 0; i < data.items.length; i++) {
+    //     let selectedLists = data.items[i].volumeInfo.categories;
+    //.lists.filter(list => list.list_name.includes("Fiction"))
+    //     console.log(selectedLists)
+        
+    // }
 });
+
+let userInput = 'Comics'
+let requestURL = 'https://www.googleapis.com/books/v1/volumes?q=' + userInput
+
+fetch(requestURL ,{
+    method: "GET",
+    headers: {
+        "Accept": "application/json"
+    },
+})
+.then(function (response) {
+    return response.json();
+})
+.then(function(data) {
+    console.log(data);})
