@@ -119,6 +119,6 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${n
     
     // event listener registered to the dropdown to display the cards array assocated with the genre of interest 
     $('.fiction-btn').on('click', displayFiction())
+    $('.non-fiction-btn').on('click', displayNonFict())
 
-    
     
