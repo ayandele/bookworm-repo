@@ -124,8 +124,6 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${n
 
 
 // save the user input to local storage
-
-
 $(".sign-up-btn").on("click", function () {
     var userEmail = $("#inputEmail");
     console.log(userEmail)

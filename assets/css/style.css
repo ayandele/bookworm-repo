@@ -70,3 +70,7 @@ footer {
 .card-title {
     color: navy
 }
+
+h4 {
+    background-color: lightgray;
+}
