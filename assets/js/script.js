@@ -35,6 +35,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${n
             }
 
             console.log(megaFictionArray);
+            console.log('hello!')
             
             // for loop here that gets into the book information mega array and creates the cards
             for (let j = 0; j < megaFictionArray.length; j++) {
@@ -67,7 +68,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${n
         };
         
         // this is just here so i can see formatting
-        // displayFiction();
+        displayFiction();
 
         // array to push completed non fiction cards into
         var finishedNFCards = [''];

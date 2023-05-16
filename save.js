@@ -40,3 +40,6 @@ fetch(requestURL ,{
             
         }
     })
+
+    // What we're working with:
+        // userInput = megaFictionArray[j].title
