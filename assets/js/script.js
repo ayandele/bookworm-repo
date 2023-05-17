@@ -2,31 +2,12 @@ nytKey = "7Q08soKcOnSaAMVL6QsI0AdfNHT6loWB"
 
 // need to create objects of books with their information based on the genre keywork in the "display_name"
 
-// function to get book title, author, image and description from the api based on t
-// need to fetch API
-// fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytKey}`, {
-//     method: "GET",
-//     headers: {
-//         "Accept": "application/json"
-//     },
-// })
-//     .then(function (response) {
-//         return response.json();
-//     })
-
-//     .then(function (data) {
-//         console.log(data);
-//         // fiction list
-//         fictionList = data.results.lists.filter(list => list.list_name.includes("Fiction"));
-//         console.log(fictionList);
-
-//         // nonfiction list
-//         nonFiction = data.results.lists.filter(list => list.list_name.includes("Nonfiction"));
-//         console.log(nonFiction);
-//     });
-
 async function displayFiction() {
     $(".list-group").empty();
+    var fictionLabel = $("<h2>");
+    fictionLabel.text("Fiction");
+    $(".list-group").append(fictionLabel);
+
     var responseJSON = await fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytKey}`, {
         method: "GET",
         headers: {
@@ -63,7 +44,7 @@ async function displayFiction() {
         fictionBookAuthor.text("Author: " + megaFictionArray[j].author);
 
         // displays the description as an h4 element with class of card-text
-        var fictionBookDescription = $("<h4>").addClass("card-text p-2");
+        var fictionBookDescription = $("<h5>").addClass("card-text p-2");
         fictionBookDescription.text(megaFictionArray[j].description);
 
         // append the book fiction book title to the fiction book card 
@@ -77,11 +58,17 @@ async function displayFiction() {
     console.log(finishedFictionCards);
 
     // code that appends everything in the finished fiction cards array to an html element on the page when the user clicks on the fiction button 
+
+    // future dev: figure out how to append the 61 finished fiction cards to different pages
     $(".list-group").append(finishedFictionCards)
 };
 
 async function displayNonFict() {
     $(".list-group").empty();
+    var nonFictLabel = $("<h2>");
+    nonFictLabel.text("Non Fiction");
+    $(".list-group").append(nonFictLabel);
+
     var responseJSON = await fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytKey}`, {
         method: "GET",
         headers: {
@@ -115,7 +102,7 @@ async function displayNonFict() {
         nonFictionBookAuthor.text("Author: " + megaNonFictionArray[j].author);
 
         // displays the description as an h4 element with class of card-text
-        var nonFictionBookDescription = $("<h4>").addClass("card-text");
+        var nonFictionBookDescription = $("<h5>").addClass("card-text");
         nonFictionBookDescription.text(megaNonFictionArray[j].description);
 
         // append the book non fiction book title to the non fiction book card 
@@ -137,11 +124,51 @@ $('.fiction-btn').on('click', displayFiction);
 $('.non-fiction-btn').on('click', displayNonFict)
 
 
+var formData = []
 
 // save the user input to local storage
-$(".sign-up-btn").on("click", function () {
-    var userEmail = $("#inputEmail");
-    console.log(userEmail)
-    localStorage.setItem("userEmail", userEmail.value);
+$(".sign-up-btn").on("click", function (e) {
+    e.preventDefault();
+    var firstName = $("#inputFirstName").val();
+    var lastName = $("#inputLastName").val();
+    var userEmail = $("#inputEmail").val()
+
+    const dataObj = {
+        firstName: firstName,
+        lastName: lastName,
+        userEmail: userEmail
+    };
+
+    console.log(dataObj)
+
+    formData.push(dataObj);
+
+
+    localStorage.setItem("userData", JSON.stringify(formData));
 
 });
+
+
+// api call to random quote generator
+factKey = "SQhVO7dkmUiJDR4FAbi/Fw==cPvInScNfpF76iUh";
+let randomQuote='';
+
+var category = 'education'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
+    headers: {'X-Api-Key': 'SQhVO7dkmUiJDR4FAbi/Fw==cPvInScNfpF76iUh' },
+    contentType: 'application/json',
+    success: function (result) {
+        console.log(result);
+        randomQuote = result[0].quote;
+        console.log(randomQuote)
+        $(".quoteText").append('"' + randomQuote + '"');
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    },
+    
+
+});
+
