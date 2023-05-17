@@ -2,29 +2,6 @@ nytKey = "7Q08soKcOnSaAMVL6QsI0AdfNHT6loWB"
 
 // need to create objects of books with their information based on the genre keywork in the "display_name"
 
-// function to get book title, author, image and description from the api based on t
-// need to fetch API
-// fetch(`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytKey}`, {
-//     method: "GET",
-//     headers: {
-//         "Accept": "application/json"
-//     },
-// })
-//     .then(function (response) {
-//         return response.json();
-//     })
-
-//     .then(function (data) {
-//         console.log(data);
-//         // fiction list
-//         fictionList = data.results.lists.filter(list => list.list_name.includes("Fiction"));
-//         console.log(fictionList);
-
-//         // nonfiction list
-//         nonFiction = data.results.lists.filter(list => list.list_name.includes("Nonfiction"));
-//         console.log(nonFiction);
-//     });
-
 async function displayFiction() {
     $(".list-group").empty();
     var fictionLabel = $("<h2>");
@@ -170,3 +147,28 @@ $(".sign-up-btn").on("click", function (e) {
     localStorage.setItem("userData", JSON.stringify(formData));
 
 });
+
+
+// api call to random quote generator
+factKey = "SQhVO7dkmUiJDR4FAbi/Fw==cPvInScNfpF76iUh";
+let randomQuote='';
+
+var category = 'education'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
+    headers: {'X-Api-Key': 'SQhVO7dkmUiJDR4FAbi/Fw==cPvInScNfpF76iUh' },
+    contentType: 'application/json',
+    success: function (result) {
+        console.log(result);
+        randomQuote = result[0].quote;
+        console.log(randomQuote)
+        $(".quoteText").append('"' + randomQuote + '"');
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    },
+    
+
+});
+
