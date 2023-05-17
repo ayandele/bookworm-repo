@@ -1,7 +1,7 @@
 # BookWorm
 
 ## DESCRIPTION
-This is a web application that gives the user current best-selling book recommendations based on their genre of interest using the NYT Books and Google Books Thid Party APIs. When the user selects their genre from the dropdown menu, they are presented with the most recent best-sellers and some pertinent information, including the title, author, a brief description and a thumbnail photo of the book. 
+This is a web application that gives the user current best-selling book recommendations based on their genre of interest using the NYT Books, Google Books and a Random Quote Generator API Thid Party APIs. When the user selects their genre from the dropdown menu, they are presented with the most recent best-sellers and some pertinent information about the book, including the title, author, a brief description and a thumbnail photo of the book. The user interface was designed with HTML, CSS and Bootstrap to give the user an optimal experience. The HTML elements that contain the book information were dynamically created using jQuery. 
 
 
 ## LINKS
@@ -27,6 +27,8 @@ The web application can be viewed on a desktop browser as shown below. The appli
 -localStorage
 
 -[NYT Books API](https://developer.nytimes.com/docs/books-product/1/overview)
+
+-[API Ninjas Quotes API](https://api-ninjas.com/api/quotes)
 
 -[Google Books API](https://developers.google.com/books)
 
